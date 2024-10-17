@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <iostream>
+#include <second.h>
 
 // You shouldn't really use this statement, but it's fine for small programs
 using namespace std;
@@ -12,10 +13,12 @@ int main(int argc, char **args) {
   SDL_Surface *winSurface = NULL;
   SDL_Window *window = NULL;
 
+  cout << "calling my_print\n";
+  my_print("string!");
   // Initialize SDL. SDL_Init will return -1 if it fails.
   if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
     cout << "Error initializing SDL: " << SDL_GetError() << endl;
-    system("pause");
+    getchar();
     // End the program
     return 1;
   }
@@ -28,7 +31,7 @@ int main(int argc, char **args) {
   // Make sure creating the window succeeded
   if (!window) {
     cout << "Error creating window: " << SDL_GetError() << endl;
-    system("pause");
+    getchar();
     // End the program
     return 1;
   }
@@ -39,7 +42,7 @@ int main(int argc, char **args) {
   // Make sure getting the surface succeeded
   if (!winSurface) {
     cout << "Error getting surface: " << SDL_GetError() << endl;
-    system("pause");
+    getchar();
     // End the program
     return 1;
   }
@@ -50,8 +53,9 @@ int main(int argc, char **args) {
   // Update the window display
   SDL_UpdateWindowSurface(window);
 
+  cout << "Getting here\n";
   // Wait
-  system("pause");
+  getchar();
 
   // Destroy the window. This will also destroy the surface
   SDL_DestroyWindow(window);

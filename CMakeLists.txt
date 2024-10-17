@@ -1,16 +1,20 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.7)
 
 set(SRC_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(HEADERS ${INCLUDE_DIR}/my_include.h)
-set(SOURCES ${SRC_DIRECTORY}/* ${INCLUDE_DIR}/*)
+set(SOURCES ${SRC_DIRECTORY}/main.cpp ${SRC_DIRECTORY}/second.cpp)
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 project(sdl_project VERSION 1.0)
 
-add_executable(main ${SRC_DIRECTORY}/main.cpp)
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS})
+
+add_executable(main ${SOURCES})
 
 target_include_directories(main PRIVATE ${INCLUDE_DIR})
+target_link_libraries(main ${SDL2_LIBRARIES})
 
 add_custom_target(run
     COMMAND main
