@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/rose/test/sdl2_proj/build",
-  "command": "/usr/bin/c++  -I/home/rose/test/sdl2_proj/include  -o CMakeFiles/main.dir/src/main.cpp.o -c /home/rose/test/sdl2_proj/src/main.cpp",
-  "file": "/home/rose/test/sdl2_proj/src/main.cpp",
-  "output": "CMakeFiles/main.dir/src/main.cpp.o"
-}
-]
