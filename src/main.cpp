@@ -13,7 +13,7 @@ SDL_Surface *winSurface = NULL;
 SDL_Window *window = NULL;
 // You must include the command line parameters for your main function to be
 // recognized by SDL
-int main(int argc, char **args) {
+int main(int argc, char *args[]) {
     int rc = 0;
 
     // Initialize SDL. SDL_Init will return -1 if it fails.
@@ -30,9 +30,6 @@ int main(int argc, char **args) {
 
     // Update the window display
     SDL_UpdateWindowSurface(window);
-
-    // Wait
-    getchar();
 
     // Destroy the window. This will also destroy the surface
     SDL_DestroyWindow(window);
