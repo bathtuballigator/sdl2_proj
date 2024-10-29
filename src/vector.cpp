@@ -1,13 +1,30 @@
+#include "vector.h"
 #include <cstdlib>
-class vec3 {
-    public:
-        vec3(int, int, int);
-        vec3();
+#include <ctime>
 
-    private:
-        int x;
-        int y;
-        int z;
-};
+template <typename T> vec3<T>::vec3(T x, T y, T z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
+}
 
-vec3::vec3(int x, int y, int z) { x = x; }
+template <typename T> vec3<T>::vec3(vec3<T> const &vec) {
+    this->x = vec->x;
+    this->y = vec->y;
+    this->z = vec->z;
+}
+
+template <typename T> vec3<T> vec3<T>::operator*(T a) {
+    return vec3<T>(x * a, y * a, z * a);
+}
+template <typename T> T vec3<T>::operator*(vec3<T> a) {
+    return (a->x * this->x) + (this->y * a->y) + (this->z * a->z);
+}
+
+template <typename T> vec3<T> vec3<T>::operator+(vec3<T> a) {
+    return vec3<T>(this->x + a->x, this->y + a->y, this->z + a->z);
+}
+
+template <typename T> vec3<T> vec3<T>::operator-(vec3<T> a) {
+    return vec3<T>(this->x - a->x, this->y - a->y, this->z - a->z);
+}
